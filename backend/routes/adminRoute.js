@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../models/userModel');
 const Booking = require('../models/bookingModel');
 const nodemailer = require('nodemailer');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const authMiddleware = require('../middlewares/authMiddleware');
 
