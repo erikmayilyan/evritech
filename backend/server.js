@@ -6,8 +6,12 @@ require('dotenv').config();
 const dbConfig = require('./config');
 
 app.use(express.json());
+const frontendUrl = process.env.NODE_ENV === 'production' 
+  ? 'https://www.evritech.ca' 
+  : 'http://localhost:3000';
+
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: frontendUrl,
   credentials: true
 }));
 
