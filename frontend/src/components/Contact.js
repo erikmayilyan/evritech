@@ -34,7 +34,7 @@ const Contact = forwardRef((props, ref) => {
 
   const submitEmail = async (formData) => {
     try {
-      const response = await axios.post('http://localhost:5001/api/other/contactPage', formData, {
+      const response = await axios.post('https://www.evritech.ca/api/other/contactPage', formData, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -48,7 +48,7 @@ const Contact = forwardRef((props, ref) => {
 
   const submitToDatabase = async (formData) => {
     try {
-      const response = await axios.post('http://localhost:5001/api/other/contact-page', formData, {
+      const response = await axios.post('https://www.evritech.ca/api/other/contact-page', formData, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'

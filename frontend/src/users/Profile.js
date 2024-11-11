@@ -20,7 +20,7 @@ function Profile() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "http://localhost:5001/api/user/update-employee-profile",
+        "https://www.evritech.ca/api/user/update-employee-profile",
         {
           ...values,
           userId: user._id,
@@ -49,7 +49,7 @@ function Profile() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "http://localhost:5001/api/user/get-employee-info-by-user-id",
+        "https://www.evritech.ca/api/user/get-employee-info-by-user-id",
         {
           userId: params.employeeId,
         },

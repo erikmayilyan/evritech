@@ -21,7 +21,7 @@ function Appointments() {
     try {
       dispatch(showLoading());
 
-      const response = await axios.get("http://localhost:5001/api/user/get-all-bookings", {
+      const response = await axios.get("https://www.evritech.ca/api/user/get-all-bookings", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -42,7 +42,7 @@ function Appointments() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "http://localhost:5001/api/admin/change-appointment-status",
+        "https://www.evritech.ca/api/admin/change-appointment-status",
         {
           email: record.email,
           name: record.firstName + ' ' + record.lastName,

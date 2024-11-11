@@ -20,7 +20,7 @@ function ResetPassword () {
       return;
     };
 
-    axios.post(`http://localhost:5001/api/user/reset-password/${id}/${token}`, { password })
+    axios.post(`https://www.evritech.ca/api/user/reset-password/${id}/${token}`, { password })
       .then(res => {
         toast.success("Password updated successfully!");
           navigate('/theLoginPart');

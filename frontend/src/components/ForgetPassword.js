@@ -11,7 +11,7 @@ function ForgetPassword () {
   axios.defaults.withCredentials = true;
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:5001/api/user/forgot-password', { email })
+    axios.post('https://www.evritech.ca/api/user/forgot-password', { email })
     .then(res => {
       toast.success("Sent Successfully, please check your email!");
       if (res.data.status === "Success") {
