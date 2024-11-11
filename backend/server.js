@@ -1,19 +1,24 @@
-const express = require ('express');
+const express = require('express');
 const cors = require('cors');
-const app = express();
 const path = require('path');
+const app = express();
 require('dotenv').config();
 const dbConfig = require('./config');
 
 app.use(express.json());
-const frontendUrl = process.env.NODE_ENV === 'production' 
-  ? 'https://www.evritech.ca' 
-  : 'http://localhost:3000';
+
+const frontendUrl = 'https://www.evritech.ca';
 
 app.use(cors({
   origin: frontendUrl,
   credentials: true
 }));
+
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
+});
 
 const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoute');
