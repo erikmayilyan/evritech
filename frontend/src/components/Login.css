@@ -1,0 +1,49 @@
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.authentication {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  box-shadow: 0 0 2px gray;
+}
+
+.theInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.theInput label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.theInput input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.primary-button {
+  background-color: rgb(202, 30, 30) !important;
+  border-color: rgb(202, 30, 30) !important;
+  height: 40px !important;
+  color: white;
+  width: 100% !important;
+  margin-top: 15px;
+}

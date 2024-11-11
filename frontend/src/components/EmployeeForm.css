@@ -1,0 +1,11 @@
+.updateProfile {
+  margin-top: 20px;
+  padding: 5px;
+  background-color: red;
+  color: white;
+}
+
+.updateProfile:hover {
+  background-color: white;
+  color: black;
+}

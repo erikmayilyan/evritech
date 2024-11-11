@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+.portfolioSection {
+  position: relative;
+  padding: 50px 0;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.portfolioThing {
+  top: 0;
+  left: 0;
+  padding-top: 50px;
+  text-align: center;
+  font-size: 36px;
+}
+
+.portfolioTitle {
+  color: black;
+  font-family: "Exo 2", sans-serif;
+}
+
+.portfolioBar {
+  height: 10px;
+  background-color: red;
+  margin-top: 20px;
+}
+
+.portfolioContent {
+  margin-top: 100px;
+}
+
+.portfolioContentSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 100px;
+}
+
+.portfolioContentSection img {
+  flex: 1;
+  height: 50%;
+  width: 50%;
+  object-fit: cover;
+  border: 5px solid black;
+  border-radius: 10px;
+}
+
+.sectionTextContainer {
+  flex: 1;
+}
+
+.portfolioWrapper {
+  max-width: 1366px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionTextContainer {
+  font-family: "Exo 2", sans-serif;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.sectionTextContainer h2 {
+  font-size: 60px;
+  font-family: "Exo 2", sans-serif;
+}
+
+.sectionTextContainer p {
+  color: rgb(38, 38, 38);
+  font-size: 20px;
+  font-family: "Exo 2", sans-serif;
+}
+
+.sectionTextContainer a {
+  background-color: rgb(210, 36, 36);
+  border: none;
+  border-radius: 10px;
+  font-family: "Exo 2", sans-serif;
+  padding: 10px;
+  width: 120px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+
+@media screen and (max-width: 1024px) {
+  .portfolioWrapper {
+    flex-direction: column; 
+  }
+
+  .portfolioContentSection {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+  }
+
+  .portfolioContentSection img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+
+  .portfolioTitle {
+    font-size: 28px;
+  }
+
+  .portfolioBar {
+    height: 6px;
+  }
+
+
+  .sectionTextContainer h2 {
+    font-size: 36px;
+  }
+
+  .sectionTextContainer p {
+    font-size: 18px;
+  }
+
+  .sectionTextContainer a {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+  }
+}

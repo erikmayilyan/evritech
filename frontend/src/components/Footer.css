@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+.footer {
+  padding: 2rem 3rem;
+  background: rgb(196, 29, 29);
+  color: #fff;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  text-align: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footerTitle {
+  font-family: "Exo 2", sans-serif;
+  margin-bottom: 10px;
+}
+
+.footerP {
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+}
+
+.dicon {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-left: 1rem;
+}
+
+.dicon:hover {
+  color: rgb(255, 202, 103);
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.middle a {
+  font-size: 1.2rem;
+  color: #fff;
+  font-family: "Exo 2", sans-serif;
+  text-decoration: none;
+  padding: 0.5rem 0 0.4rem 0;
+}
+
+.theLower {
+  text-align: center;
+  font-size: 120%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: black;
+}
+
+.theLower a {
+  font-family: "Exo 2", sans-serif;
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 1.5rem 2rem;
+  }
+
+  .dicon {
+    font-size: 2rem;
+    margin-left: 0.5rem;
+  }
+
+  .middle a {
+    font-size: 1rem;
+    padding: 0.4rem 0 0.3rem 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footerTitle {
+    font-size: 1.5rem;
+  }
+
+  .footerP {
+    font-size: 14px;
+  }
+
+  .dicon {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .middle {
+    flex-direction: column;
+    margin: 1rem 0;
+  }
+
+  .middle a {
+    font-size: 0.9rem;
+    padding: 0.3rem 0 0.2rem 0;
+  }
+}

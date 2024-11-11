@@ -1,0 +1,180 @@
+.portfolio-main {
+  .portfolio-contents {
+    padding: 20px;
+    width: 100%;
+    margin-bottom: 50px;
+
+    .portfolio-title {
+      text-align: center;
+      font-family: "Exo 2", sans-serif;
+      text-transform: uppercase;
+      margin-top: 50px;
+      font-weight: 700;
+    }
+
+    .portfolio-contents-filter {
+      display: inline-block;
+      margin: 0 auto;
+      border-radius: 25px;
+      border: 1px solid rgb(178, 24, 24);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: fit-content;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      padding: 0;
+
+      li {
+        font-size: 16px;
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        color: rgb(178, 24, 24);
+        font-family: "Exo 2", sans-serif;
+        text-transform: uppercase;
+        padding: 15px 20px;
+        margin: 0;
+        border-right: 1px solid rgb(178, 24, 24);
+        transition: all 0.5s ease;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        &.active-filter {
+          background: rgb(178, 24, 24);
+          color: white;
+          font-weight: 600;
+          padding: 15px 20px;
+        }
+
+        &:first-child.active-filter {
+          border-top-left-radius: 25px;
+          border-bottom-left-radius: 25px;
+        }
+
+        &:last-child.active-filter {
+          border-top-right-radius: 25px;
+          border-bottom-right-radius: 25px;
+        }
+
+        &:hover {
+          background-color: rgba(178, 24, 24, 0.1);
+        }
+      }
+    }
+
+    .portfolio-contents-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: auto;
+      gap: 1rem;
+      margin-top: 10px;
+
+      .portfolio-contents-cards-item {
+        height: 366px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden; 
+
+        .portfolio-contents-cards-item-images {
+          height: 100%;
+
+          a {
+            height: 100%;
+
+            img {
+              height: inherit;
+              border: 2.5px solid rgb(178, 24, 24);
+              border-radius: 25px;
+              object-fit: cover;
+              width: 100%;
+            }
+          }
+        }
+
+        .overlay-two {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(178, 24, 24, 0.618); 
+          color: white;
+          border-radius: 25px;
+          opacity: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          padding: 20px;
+          transition: opacity 0.3s ease-in-out;
+          pointer-events: none; 
+        }
+
+        &:hover .overlay-two {
+          opacity: 1; 
+          pointer-events: auto;
+
+          .overlay-Title {
+            font-family: "Exo 2", sans-serif;
+            text-transform: uppercase;
+          }
+
+          .portfolio-button {
+            display: inline-block;
+            background-color: rgb(6, 6, 6);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-family: "Exo 2", sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .portfolio-contents-filter > li {
+    font-size: 14px !important;
+  }
+
+  .portfolio-contents-cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .portfolio-contents-filter {
+    display: flex;
+    flex-direction: column; 
+    width: 100%; 
+    border-radius: 0px !important;
+    padding: 0; 
+    li {
+      font-size: 11px !important;
+      text-align: center; 
+      border-right: none; 
+      border-radius: 0px !important;
+      border-bottom: 1px solid rgb(178, 24, 24);
+      width: 100%; 
+    }
+
+    li:last-child {
+      border-bottom: none; 
+    }
+  }
+
+  .portfolio-contents-cards {
+    grid-template-columns: 1fr !important;
+  }
+}
