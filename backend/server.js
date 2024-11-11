@@ -7,10 +7,12 @@ const dbConfig = require('./config');
 
 app.use(express.json());
 
-const frontendUrl = 'https://www.evritech.ca';
+const frontendUrl = process.env.NODE_ENV === 'production' ? 'https://www.evritech.ca' : 'http://localhost:3000';
 
 app.use(cors({
   origin: frontendUrl,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 
