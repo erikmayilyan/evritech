@@ -30,4 +30,6 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const port = process.env.PORT || 5001;
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Listening on port ${port}`);
+});
