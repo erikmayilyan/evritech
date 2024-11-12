@@ -1,15 +1,27 @@
-const express = require ('express');
+const express = require('express');
 const cors = require('cors');
-const app = express();
 const path = require('path');
+const app = express();
 require('dotenv').config();
 const dbConfig = require('./config');
 
 app.use(express.json());
+
+console.log("MongoDB URL:", process.env.MONGO_URL);
+
+const frontendUrl = process.env.NODE_ENV === 'production' ? 'https://www.evritech.ca' : 'http://localhost:3000';
+
+app.use(express.json());
 app.use(cors({
-  origin: 'https://www.evritech.ca',
+  origin: frontendUrl,
   credentials: true
 }));
+
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
+});
 
 const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoute');
@@ -21,4 +33,6 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const port = process.env.PORT || 5001;
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Listening on port ${port}`);
+});
