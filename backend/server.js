@@ -7,6 +7,8 @@ const dbConfig = require('./config');
 
 app.use(express.json());
 
+console.log("MongoDB URL:", process.env.MONGO_URL);
+
 const frontendUrl = process.env.NODE_ENV === 'production' ? 'https://www.evritech.ca' : 'http://localhost:3000';
 
 app.use(cors({
