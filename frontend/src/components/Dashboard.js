@@ -5,7 +5,7 @@ import Layout from "./Layout";
 function Dashboard () {
   const getData = async () => {
     try {
-      const response = await axios.post('https://www.evritech.ca/api/user/get-user-info-by-id', {}, 
+      const response = await axios.post('http://localhost:5001/api/user/get-user-info-by-id', {}, 
       {
         headers: {
           Authorization : 'Bearer ' + localStorage.getItem('token') 

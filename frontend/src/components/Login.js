@@ -17,7 +17,7 @@ function Login() {
 
     try {
       dispatch(showLoading());
-      const response = await axios.post("https://www.evritech.ca/api/user/login", values);
+      const response = await axios.post("http://localhost:5001/api/user/login", values);
       dispatch(hideLoading());
       if (response.data.success) {
         toast.success(response.data.message);

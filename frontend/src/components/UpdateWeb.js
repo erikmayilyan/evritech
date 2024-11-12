@@ -14,7 +14,7 @@ function UpdateWeb() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`https://www.evritech.ca/api/user/getWeb/${id}`)
+    axios.get(`http://localhost:5001/api/user/getWeb/${id}`)
       .then(result => {
         const data = result.data;
         setTitle(data.title || '');
@@ -42,7 +42,7 @@ function UpdateWeb() {
       formData.append('image', image);
     }
 
-    axios.put(`https://www.evritech.ca/api/user/updateWeb/${id}`, formData)
+    axios.put(`http://localhost:5001/api/user/updateWeb/${id}`, formData)
       .then(response => {
         console.log('Update successful:', response.data);
         navigate('/portfolioWeb');
@@ -74,7 +74,7 @@ function UpdateWeb() {
               onChange={handleImageChange}
             />
             {currentImage && !image && ( // Display image if currentImage is set
-              <img src={`https://www.evritech.ca/${currentImage}`} alt="Current" style={{ width: '100px', height: 'auto' }} />
+              <img src={`http://localhost:5001/${currentImage}`} alt="Current" style={{ width: '100px', height: 'auto' }} />
             )}
           </div>
           <div className='mb-2'>

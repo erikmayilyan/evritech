@@ -13,7 +13,7 @@ function ProtectedRoute(props) {
   const getUser = async () => {
     try {
       dispatch(showLoading());
-      const response = await axios.post('https://www.evritech.ca/api/user/get-user-info-by-id', 
+      const response = await axios.post('http://localhost:5001/api/user/get-user-info-by-id', 
         { token : localStorage.getItem('token') }, 
         {
           headers: {

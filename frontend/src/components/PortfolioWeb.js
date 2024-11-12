@@ -8,13 +8,13 @@ function PortfolioWeb() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("https://www.evritech.ca/api/user/getWeb")
+    axios.get("http://localhost:5001/api/user/getWeb")
       .then(result => setUsers(result.data))
       .catch(error => console.log(error));
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`https://www.evritech.ca/api/user/deleteWeb/${id}`)
+    axios.delete(`http://localhost:5001/api/user/deleteWeb/${id}`)
     .then(res => {
       console.log(res)
       window.location.reload()
@@ -43,14 +43,14 @@ function PortfolioWeb() {
             <tbody>
               {
                 users.map((user) => {
-                  const imageUrl = `https://www.evritech.ca/${user.image}`;
+                  const imageUrl = `http://localhost:5001/${user.image}`;
                   console.log('Image URL: ', imageUrl);
 
                   return (
                     <tr key={user._id}>
                       <td>{user.title}</td> 
                       <td>
-                        <img src={`https://www.evritech.ca/${user.image}`} alt={user.title} style={{ width: '100px', height: 'auto' }} />
+                        <img src={`http://localhost:5001/${user.image}`} alt={user.title} style={{ width: '100px', height: 'auto' }} />
                       </td>
                       <td>{user.description}</td> 
                       <td><a href={user.link} target="_blank" rel="noopener noreferrer">{user.link}</a></td> 

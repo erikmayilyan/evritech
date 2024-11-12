@@ -8,13 +8,13 @@ function PortfolioWeb() {
   const [graphic, setGraphic] = useState([]);
 
   useEffect(() => {
-    axios.get("https://www.evritech.ca/api/user/getGraphic")
+    axios.get("http://localhost:5001/api/user/getGraphic")
       .then(result => setGraphic(result.data))
       .catch(error => console.log(error));
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`https://www.evritech.ca/api/user/deleteGraphic/${id}`)
+    axios.delete(`http://localhost:5001/api/user/deleteGraphic/${id}`)
     .then((res) => {
       console.log(res);
       toast.success("Item deleted successfully!");
@@ -43,14 +43,14 @@ function PortfolioWeb() {
             <tbody>
               {
                 graphic.map((graphic) => {
-                  const imageUrl = `https://www.evritech.ca/${graphic.image}`;
+                  const imageUrl = `http://localhost:5001/${graphic.image}`;
                   console.log('Image URL: ', imageUrl);
 
                   return (
                     <tr key={graphic._id}>
                       <td>{graphic.title}</td> 
                       <td>
-                        <img src={`https://www.evritech.ca/${graphic.image}`} alt={graphic.title} style={{ width: '100px', height: 'auto' }} />
+                        <img src={`http://localhost:5001/${graphic.image}`} alt={graphic.title} style={{ width: '100px', height: 'auto' }} />
                       </td>
                       <td>{graphic.description}</td> 
                       <td>

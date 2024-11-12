@@ -12,7 +12,7 @@ function EmployeeList() {
   const getEmployeesData = async () => {
     try {
       dispatch(showLoading());
-      const response = await axios.get('https://www.evritech.ca/api/admin/get-all-employees', {
+      const response = await axios.get('http://localhost:5001/api/admin/get-all-employees', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`
         }
@@ -30,7 +30,7 @@ function EmployeeList() {
   const removeEmployee = async (id) => {
     try {
       dispatch(showLoading());
-      const response = await axios.delete(`https://www.evritech.ca/api/admin/delete-employee/${id}`, {
+      const response = await axios.delete(`http://localhost:5001/api/admin/delete-employee/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`
         }
