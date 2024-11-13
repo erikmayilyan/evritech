@@ -7,7 +7,7 @@ function Dashboard () {
     const apiUrl = process.env.REACT_APP_API_URL;
     
     try {
-      const response = await axios.post(`${apiUrl}/api/user/get-user-info-by-id`, {}, 
+      const response = await axios.post(`https://www.evritech.ca/api/user/get-user-info-by-id`, {}, 
       {
         headers: {
           Authorization : 'Bearer ' + localStorage.getItem('token') 

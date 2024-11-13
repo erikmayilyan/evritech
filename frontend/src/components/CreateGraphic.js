@@ -24,7 +24,7 @@ function CreateGraphic() {
     const apiUrl = process.env.REACT_APP_API_URL;
   
     try {
-      const response = await axios.post(`${apiUrl}/api/user/createGraphic`, formData, {
+      const response = await axios.post(`https://www.evritech.ca/api/user/createGraphic`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },

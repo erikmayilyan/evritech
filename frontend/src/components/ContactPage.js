@@ -23,7 +23,7 @@ function ContactPage() {
   
       const apiUrl = process.env.REACT_APP_API_URL;
 
-      const response = await axios.get(`${apiUrl}/api/user/contact-page`, {
+      const response = await axios.get(`https://www.evritech.ca/api/user/contact-page`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

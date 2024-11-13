@@ -14,7 +14,7 @@ function UpdateWeb() {
   const navigate = useNavigate();
 
   const apiUrl = process.env.REACT_APP_API_URL;
-
+https://www.evritech.ca
   useEffect(() => {
     axios.get(`${apiUrl}/api/user/getWeb/${id}`, { withCredentials: true })
       .then(result => {
@@ -42,7 +42,7 @@ function UpdateWeb() {
     formData.append('urlTitle', url);
     if (image) {
       formData.append('image', image);
-    };
+    }https://www.evritech.ca
 
     axios.put(`${apiUrl}/api/user/updateWeb/${id}`, formData, { withCredentials: true })
       .then(response => {
@@ -74,7 +74,7 @@ function UpdateWeb() {
               type="file" 
               className="form-control" 
               onChange={handleImageChange}
-            />
+            />https://www.evritech.ca
             {currentImage && !image && ( // Display image if currentImage is set
               <img src={`${apiUrl}/${currentImage}`} alt="Current" style={{ width: '100px', height: 'auto' }} />
             )}

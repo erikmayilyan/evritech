@@ -12,7 +12,7 @@ function UpdateGraphic() {
   const navigate = useNavigate();
 
   const apiUrl = process.env.REACT_APP_API_URL;
-
+https://www.evritech.ca
   useEffect(() => {
     axios.get(`${apiUrl}/api/user/getGraphic/${id}`, { withCredentials: true })
       .then(result => {
@@ -36,7 +36,7 @@ function UpdateGraphic() {
     formData.append('description', description);
     if (image) {
       formData.append('image', image);
-    };
+    };https://www.evritech.ca
 
     axios.put(`${apiUrl}/api/user/updateGraphic/${id}`, formData, { withCredentials: true })
       .then(response => {
@@ -68,7 +68,7 @@ function UpdateGraphic() {
               type="file" 
               className="form-control" 
               onChange={handleImageChange}
-            />
+            />https://www.evritech.ca
             {currentImage && !image && ( 
               <img src={`${apiUrl}/${currentImage}`} alt="Current" style={{ width: '100px', height: 'auto' }} />
             )}
