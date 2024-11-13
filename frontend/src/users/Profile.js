@@ -30,8 +30,7 @@ function Profile() {
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          withCredentials: true
+          }
         }
       );
       dispatch(hideLoading());
@@ -61,8 +60,7 @@ function Profile() {
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          withCredentials: true
+          }
         }
       );
       dispatch(hideLoading());

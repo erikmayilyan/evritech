@@ -40,8 +40,7 @@ const Contact = forwardRef((props, ref) => {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-        },
-        withCredentials: true
+        }
       });
       console.log('Email Sent:', response.data);
     } catch (error) {
@@ -57,8 +56,7 @@ const Contact = forwardRef((props, ref) => {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-        },
-        withCredentials: true
+        }
       });
       console.log('Contact Saved to MongoDB:', response.data);
     } catch (error) {

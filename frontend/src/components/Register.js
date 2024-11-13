@@ -28,7 +28,7 @@ function Register() {
 
     try {
       dispatch(showLoading());
-      const response = await axios.post(`https://www.evritech.ca/api/admin/register`, values, { withCredentials: true });
+      const response = await axios.post(`https://www.evritech.ca/api/admin/register`, values);
       dispatch(hideLoading());
       if (response.data.success) {
         toast.success(response.data.message);

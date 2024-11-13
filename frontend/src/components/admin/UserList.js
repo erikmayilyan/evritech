@@ -17,8 +17,7 @@ function EmployeeList() {
       const response = await axios.get(`https://www.evritech.ca/api/admin/get-all-employees`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`
-        },
-        withCredentials: true 
+        } 
       });
       dispatch(hideLoading());
       if (response.data.success) {
@@ -38,8 +37,7 @@ function EmployeeList() {
       const response = await axios.delete(`https://www.evritech.ca/api/admin/delete-employee/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`
-        },
-        withCredentials: true
+        }
       });
       dispatch(hideLoading());
       if (response.data.success) {

@@ -26,8 +26,7 @@ function ContactPage() {
       const response = await axios.get(`https://www.evritech.ca/api/user/contact-page`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        withCredentials: true
+        }
       });
   
       dispatch(hideLoading());

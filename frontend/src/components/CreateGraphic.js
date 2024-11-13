@@ -27,8 +27,7 @@ function CreateGraphic() {
       const response = await axios.post(`https://www.evritech.ca/api/user/createGraphic`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
-        },
-        withCredentials: true
+        }
       });
   
       toast.success("Graphic Design Created Successfully");

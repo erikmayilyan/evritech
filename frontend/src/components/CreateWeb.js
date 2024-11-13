@@ -26,8 +26,7 @@ function CreateWeb() {
       const response = await axios.post(`https://www.evritech.ca/api/user/createWeb`, formData, {
         headers: {
           'Content-Type' : 'multipart/form-data'
-        },
-        withCredentials: true
+        }
       });
       toast.success("Website Created Successfully");
       console.log('Website createf successfully: ', response.data);

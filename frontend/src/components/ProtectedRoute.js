@@ -20,8 +20,7 @@ function ProtectedRoute(props) {
         {
           headers: {
              Authorization : `Bearer ${localStorage.getItem('token')}`
-          },
-          withCredentials: true
+          }
         }
       );
       dispatch(hideLoading());

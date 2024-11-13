@@ -16,7 +16,7 @@ function Portfolio() {
   useEffect(() => {
     const fetchWebsites = async () => {
       try {
-        const response = await axios.get(`https://www.evritech.ca/api/other/the-websites`, { withCredentials: true });
+        const response = await axios.get(`https://www.evritech.ca/api/other/the-websites`);
         setWebsites(response.data);
       } catch (error) {
         console.error('Error fetching websites:', error);
@@ -25,7 +25,7 @@ function Portfolio() {
     };
     const fetchGraphics = async () => {
       try {
-        const response = await axios.get(`https://www.evritech.ca/api/other/the-graphic`, { withCredentials: true });
+        const response = await axios.get(`https://www.evritech.ca/api/other/the-graphic`);
         setGraphics(response.data);
       } catch (error) {
         console.error('Error fetching graphic designs:', error);

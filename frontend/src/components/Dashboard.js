@@ -11,8 +11,7 @@ function Dashboard () {
       {
         headers: {
           Authorization : 'Bearer ' + localStorage.getItem('token') 
-        },
-        withCredentials: true
+        }
       });
       
     } catch (error) {

@@ -10,13 +10,13 @@ function PortfolioWeb() {
   const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    axios.get(`https://www.evritech.ca/api/user/getWeb`, { withCredentials: true })
+    axios.get(`https://www.evritech.ca/api/user/getWeb`)
       .then(result => setUsers(result.data))
       .catch(error => console.log(error));
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`https://www.evritech.ca/api/user/deleteWeb/${id}`, { withCredentials: true })
+    axios.delete(`https://www.evritech.ca/api/user/deleteWeb/${id}`)
     .then(res => {
       console.log(res)
       window.location.reload()

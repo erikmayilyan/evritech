@@ -10,13 +10,13 @@ function PortfolioWeb() {
   const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    axios.get(`https://www.evritech.ca/api/user/getGraphic`, { withCredentials: true })
+    axios.get(`https://www.evritech.ca/api/user/getGraphic`)
       .then(result => setGraphic(result.data))
       .catch(error => console.log(error));
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`https://www.evritech.ca/api/user/deleteGraphic/${id}`, { withCredentials: true })
+    axios.delete(`https://www.evritech.ca/api/user/deleteGraphic/${id}`)
     .then((res) => {
       console.log(res);
       toast.success("Item deleted successfully!");

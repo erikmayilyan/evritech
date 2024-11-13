@@ -41,9 +41,6 @@ function Booking() {
         {
           date,
           time
-        },
-        {
-          withCredentials: true
         }
       );
       dispatch(hideLoading());
@@ -107,8 +104,7 @@ function Booking() {
           {
             headers: {
               'Content-Type': 'application/json'  
-            },
-            withCredentials: true  
+            } 
           }
         );
         dispatch(hideLoading());
