@@ -1,27 +1,29 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const app = express();
+const path = require('path');
 require('dotenv').config();
-const dbConfig = require('./config');
+const dbConfig = require('./config'); 
 
 app.use(express.json());
 
-console.log("MongoDB URL:", process.env.MONGO_URL);
+const allowedOrigins = ['http://localhost:3000', 'https://www.evritech.ca'];
 
-const frontendUrl = process.env.NODE_ENV === 'production' ? 'https://www.evritech.ca' : 'http://localhost:3000';
-
-app.use(express.json());
 app.use(cors({
-  origin: frontendUrl,
-  credentials: true
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
 }));
 
-app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+console.log(`Allowed CORS origins: ${allowedOrigins.join(', ')}`);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
-});
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoute');
@@ -29,10 +31,13 @@ const otherRoute = require('./routes/otherRoute');
 app.use('/api/user', userRoute);
 app.use('/api/admin', adminRoute);
 app.use('/api/other', otherRoute);
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
+  });
+}
 
 const port = process.env.PORT || 5001;
-
-app.listen(port, '0.0.0.0', () => {
-    console.log(`Listening on port ${port}`);
-});
+app.listen(port, () => console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`));
