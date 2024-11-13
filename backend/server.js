@@ -39,7 +39,12 @@ if (process.env.NODE_ENV === 'production') {
 
   app.use(express.static(buildPath));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'));
+    res.sendFile(path.join(buildPath, 'index.html'), function (err) {
+      if (err) {
+        console.error("Error serving index.html:", err);
+        res.status(500).send("Error loading the application.");
+      }
+    });
   });
 }
 
