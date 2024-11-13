@@ -5,10 +5,11 @@ const path = require('path');
 require('dotenv').config();
 const dbConfig = require('./config'); 
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
+
 app.use(express.json());
 
 const allowedOrigins = ['http://localhost:3000', 'https://www.evritech.ca'];
-
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
@@ -33,11 +34,18 @@ app.use('/api/admin', adminRoute);
 app.use('/api/other', otherRoute);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+  const buildPath = path.join(__dirname, '..', 'frontend', 'build');
+  console.log("Serving static files from:", buildPath);
+
+  app.use(express.static(buildPath));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
+    res.sendFile(path.join(buildPath, 'index.html'));
   });
 }
+
+app.use((req, res, next) => {
+  res.status(404).send("Sorry, we can't find that!");
+});
 
 const port = process.env.PORT || 5001;
 app.listen(port, () => console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`));
