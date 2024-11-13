@@ -11,14 +11,17 @@ function ProtectedRoute(props) {
   const navigate = useNavigate();
 
   const getUser = async () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+    
     try {
       dispatch(showLoading());
-      const response = await axios.post('https://www.evritech.ca/api/user/get-user-info-by-id', 
+      const response = await axios.post(`${apiUrl}/api/user/get-user-info-by-id`, 
         { token : localStorage.getItem('token') }, 
         {
           headers: {
              Authorization : `Bearer ${localStorage.getItem('token')}`
-          }
+          },
+          withCredentials: true
         }
       );
       dispatch(hideLoading());

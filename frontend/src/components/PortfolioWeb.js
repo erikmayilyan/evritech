@@ -7,14 +7,16 @@ import axios from "axios";
 function PortfolioWeb() {
   const [users, setUsers] = useState([]);
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
-    axios.get("https://www.evritech.ca/api/user/getWeb")
+    axios.get(`${apiUrl}/api/user/getWeb`, { withCredentials: true })
       .then(result => setUsers(result.data))
       .catch(error => console.log(error));
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`https://www.evritech.ca/api/user/deleteWeb/${id}`)
+    axios.delete(`${apiUrl}/api/user/deleteWeb/${id}`, { withCredentials: true })
     .then(res => {
       console.log(res)
       window.location.reload()
@@ -43,14 +45,14 @@ function PortfolioWeb() {
             <tbody>
               {
                 users.map((user) => {
-                  const imageUrl = `https://www.evritech.ca/${user.image}`;
+                  const imageUrl = `${apiUrl}/${user.image}`;
                   console.log('Image URL: ', imageUrl);
 
                   return (
                     <tr key={user._id}>
                       <td>{user.title}</td> 
                       <td>
-                        <img src={`https://www.evritech.ca/${user.image}`} alt={user.title} style={{ width: '100px', height: 'auto' }} />
+                        <img src={`${apiUrl}/${user.image}`} alt={user.title} style={{ width: '100px', height: 'auto' }} />
                       </td>
                       <td>{user.description}</td> 
                       <td><a href={user.link} target="_blank" rel="noopener noreferrer">{user.link}</a></td> 

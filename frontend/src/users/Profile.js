@@ -17,10 +17,12 @@ function Profile() {
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "https://www.evritech.ca/api/user/update-employee-profile",
+        `${apiUrl}/api/user/update-employee-profile`,
         {
           ...values,
           userId: user._id,
@@ -28,7 +30,8 @@ function Profile() {
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
-          }
+          },
+          withCredentials: true
         }
       );
       dispatch(hideLoading());
@@ -46,17 +49,20 @@ function Profile() {
   };
 
   const getEmployeeData = async () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+    
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "https://www.evritech.ca/api/user/get-employee-info-by-user-id",
+        `${apiUrl}/api/user/get-employee-info-by-user-id`,
         {
           userId: params.employeeId,
         },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
-          }
+          },
+          withCredentials: true
         }
       );
       dispatch(hideLoading());

@@ -7,14 +7,16 @@ import axios from "axios";
 function PortfolioWeb() {
   const [graphic, setGraphic] = useState([]);
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
-    axios.get("https://www.evritech.ca/api/user/getGraphic")
+    axios.get(`${apiUrl}/api/user/getGraphic`, { withCredentials: true })
       .then(result => setGraphic(result.data))
       .catch(error => console.log(error));
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`https://www.evritech.ca/api/user/deleteGraphic/${id}`)
+    axios.delete(`${apiUrl}/api/user/deleteGraphic/${id}`, { withCredentials: true })
     .then((res) => {
       console.log(res);
       toast.success("Item deleted successfully!");
@@ -43,14 +45,14 @@ function PortfolioWeb() {
             <tbody>
               {
                 graphic.map((graphic) => {
-                  const imageUrl = `https://www.evritech.ca/${graphic.image}`;
+                  const imageUrl = `${apiUrl}/${graphic.image}`;
                   console.log('Image URL: ', imageUrl);
 
                   return (
                     <tr key={graphic._id}>
                       <td>{graphic.title}</td> 
                       <td>
-                        <img src={`https://www.evritech.ca/${graphic.image}`} alt={graphic.title} style={{ width: '100px', height: 'auto' }} />
+                        <img src={`${apiUrl}/${graphic.image}`} alt={graphic.title} style={{ width: '100px', height: 'auto' }} />
                       </td>
                       <td>{graphic.description}</td> 
                       <td>

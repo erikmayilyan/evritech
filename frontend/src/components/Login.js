@@ -15,9 +15,11 @@ function Login() {
     const formData = new FormData(event.target);
     const values = Object.fromEntries(formData.entries());
 
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     try {
       dispatch(showLoading());
-      const response = await axios.post("https://www.evritech.ca/api/user/login", values);
+      const response = await axios.post(`${apiUrl}/api/user/login`, values, { withCredentials: true });
       dispatch(hideLoading());
       if (response.data.success) {
         toast.success(response.data.message);

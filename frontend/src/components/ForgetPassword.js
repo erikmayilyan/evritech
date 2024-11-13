@@ -11,7 +11,8 @@ function ForgetPassword () {
   axios.defaults.withCredentials = true;
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('https://www.evritech.ca/api/user/forgot-password', { email })
+    const apiUrl = process.env.REACT_APP_API_URL;
+    axios.post(`${apiUrl}/api/user/forgot-password`, { email }, { withCredentials: true })
     .then(res => {
       toast.success("Sent Successfully, please check your email!");
       if (res.data.status === "Success") {

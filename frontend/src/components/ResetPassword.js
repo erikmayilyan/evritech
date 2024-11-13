@@ -20,7 +20,9 @@ function ResetPassword () {
       return;
     };
 
-    axios.post(`https://www.evritech.ca/api/user/reset-password/${id}/${token}`, { password })
+    const apiUrl = process.env.REACT_APP_API_URL;
+
+    axios.post(`${apiUrl}/api/user/reset-password/${id}/${token}`, { password }, { withCredentials: true })
       .then(res => {
         toast.success("Password updated successfully!");
           navigate('/theLoginPart');

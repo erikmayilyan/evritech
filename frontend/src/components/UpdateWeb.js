@@ -13,8 +13,10 @@ function UpdateWeb() {
   const [currentImage, setCurrentImage] = useState('');
   const navigate = useNavigate();
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
-    axios.get(`https://www.evritech.ca/api/user/getWeb/${id}`)
+    axios.get(`${apiUrl}/api/user/getWeb/${id}`, { withCredentials: true })
       .then(result => {
         const data = result.data;
         setTitle(data.title || '');
@@ -40,9 +42,9 @@ function UpdateWeb() {
     formData.append('urlTitle', url);
     if (image) {
       formData.append('image', image);
-    }
+    };
 
-    axios.put(`https://www.evritech.ca/api/user/updateWeb/${id}`, formData)
+    axios.put(`${apiUrl}/api/user/updateWeb/${id}`, formData, { withCredentials: true })
       .then(response => {
         console.log('Update successful:', response.data);
         navigate('/portfolioWeb');
@@ -74,7 +76,7 @@ function UpdateWeb() {
               onChange={handleImageChange}
             />
             {currentImage && !image && ( // Display image if currentImage is set
-              <img src={`https://www.evritech.ca/${currentImage}`} alt="Current" style={{ width: '100px', height: 'auto' }} />
+              <img src={`${apiUrl}/${currentImage}`} alt="Current" style={{ width: '100px', height: 'auto' }} />
             )}
           </div>
           <div className='mb-2'>

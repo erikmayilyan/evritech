@@ -10,12 +10,15 @@ function EmployeeList() {
   const dispatch = useDispatch();
 
   const getEmployeesData = async () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     try {
       dispatch(showLoading());
-      const response = await axios.get('https://www.evritech.ca/api/admin/get-all-employees', {
+      const response = await axios.get(`${apiUrl}/api/admin/get-all-employees`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`
-        }
+        },
+        withCredentials: true 
       });
       dispatch(hideLoading());
       if (response.data.success) {
@@ -28,12 +31,15 @@ function EmployeeList() {
   };
 
   const removeEmployee = async (id) => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+    
     try {
       dispatch(showLoading());
-      const response = await axios.delete(`https://www.evritech.ca/api/admin/delete-employee/${id}`, {
+      const response = await axios.delete(`${apiUrl}/api/admin/delete-employee/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`
-        }
+        },
+        withCredentials: true
       });
       dispatch(hideLoading());
       if (response.data.success) {

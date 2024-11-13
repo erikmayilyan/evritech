@@ -11,8 +11,10 @@ function UpdateGraphic() {
   const [currentImage, setCurrentImage] = useState('');
   const navigate = useNavigate();
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
-    axios.get(`https://www.evritech.ca/api/user/getGraphic/${id}`)
+    axios.get(`${apiUrl}/api/user/getGraphic/${id}`, { withCredentials: true })
       .then(result => {
         const data = result.data;
         setTitle(data.title || '');
@@ -36,7 +38,7 @@ function UpdateGraphic() {
       formData.append('image', image);
     };
 
-    axios.put(`https://www.evritech.ca/api/user/updateGraphic/${id}`, formData)
+    axios.put(`${apiUrl}/api/user/updateGraphic/${id}`, formData, { withCredentials: true })
       .then(response => {
         console.log('Update successful:', response.data);
         navigate('/portfolioGraphic');
@@ -68,7 +70,7 @@ function UpdateGraphic() {
               onChange={handleImageChange}
             />
             {currentImage && !image && ( 
-              <img src={`https://www.evritech.ca/${currentImage}`} alt="Current" style={{ width: '100px', height: 'auto' }} />
+              <img src={`${apiUrl}/${currentImage}`} alt="Current" style={{ width: '100px', height: 'auto' }} />
             )}
           </div>
           <div className='mb-2'>

@@ -20,11 +20,14 @@ function CreateWeb() {
     formData.append('link', link);
     formData.append('urlTitle', url);
 
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     try {
-      const response = await axios.post('https://www.evritech.ca/api/user/createWeb', formData, {
+      const response = await axios.post(`${apiUrl}/api/user/createWeb`, formData, {
         headers: {
           'Content-Type' : 'multipart/form-data'
-        }
+        },
+        withCredentials: true
       });
       toast.success("Website Created Successfully");
       console.log('Website createf successfully: ', response.data);

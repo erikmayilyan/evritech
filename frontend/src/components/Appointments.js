@@ -18,10 +18,14 @@ function Appointments() {
   }, []);
 
   const getAppointmentsData = async () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     try {
       dispatch(showLoading());
 
-      const response = await axios.get("https://www.evritech.ca/api/user/get-all-bookings", {
+      const apiUrl = process.env.REACT_APP_API_URL;
+
+      const response = await axios.get(`${apiUrl}/api/user/get-all-bookings`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -39,10 +43,12 @@ function Appointments() {
   };
 
   const changeAppointmentStatus = async (record, status) => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "https://www.evritech.ca/api/admin/change-appointment-status",
+        `${apiUrl}/api/admin/change-appointment-status`,
         {
           email: record.email,
           name: record.firstName + ' ' + record.lastName,
@@ -54,7 +60,8 @@ function Appointments() {
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
-          }
+          },
+          withCredentials: true
         }
       );
       dispatch(hideLoading());

@@ -33,12 +33,15 @@ const Contact = forwardRef((props, ref) => {
   };
 
   const submitEmail = async (formData) => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     try {
-      const response = await axios.post('https://www.evritech.ca/api/other/contactPage', formData, {
+      const response = await axios.post(`${apiUrl}/api/other/contactPage`, formData, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-        }
+        },
+        withCredentials: true
       });
       console.log('Email Sent:', response.data);
     } catch (error) {
@@ -47,12 +50,15 @@ const Contact = forwardRef((props, ref) => {
   };
 
   const submitToDatabase = async (formData) => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+    
     try {
-      const response = await axios.post('https://www.evritech.ca/api/other/contact-page', formData, {
+      const response = await axios.post(`${apiUrl}/api/other/contact-page`, formData, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-        }
+        },
+        withCredentials: true
       });
       console.log('Contact Saved to MongoDB:', response.data);
     } catch (error) {

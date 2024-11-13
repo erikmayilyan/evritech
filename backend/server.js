@@ -9,17 +9,19 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
 app.use(express.json());
 
+// Update allowed origins to match your frontend domains
 const allowedOrigins = ['http://localhost:3000', 'https://www.evritech.ca'];
+
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
+    if (!origin) return callback(null, true);  // Allow requests without origin (for non-browser requests, etc.)
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error('Not allowed by CORS'));  // Block requests from disallowed origins
     }
   },
-  credentials: true,
+  credentials: true,  // Enable sending cookies with cross-origin requests
 }));
 
 console.log(`Allowed CORS origins: ${allowedOrigins.join(', ')}`);

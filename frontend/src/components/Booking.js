@@ -32,13 +32,18 @@ function Booking() {
   }, [modal]);
 
   const checkAvailability = async () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "https://www.evritech.ca/api/other/check-booking-availability",  
+        "${apiUrl}/api/other/check-booking-availability",  
         {
           date,
           time
+        },
+        {
+          withCredentials: true
         }
       );
       dispatch(hideLoading());
@@ -78,13 +83,15 @@ function Booking() {
   
   const bookNow = async (event) => {
     event.preventDefault();
+
+    const apiUrl = process.env.REACT_APP_API_URL;
   
     try {
       const isAvailable = await checkAvailability();
       if (isAvailable) {
         dispatch(showLoading());
         const response = await axios.post(
-          "https://www.evritech.ca/api/other/book-appointment",  
+          "${apiUrl}/api/other/book-appointment",  
           {
             firstName,
             lastName,
@@ -96,6 +103,12 @@ function Booking() {
             date, 
             time, 
             timezone
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json'  
+            },
+            withCredentials: true  
           }
         );
         dispatch(hideLoading());
