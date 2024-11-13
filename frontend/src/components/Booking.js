@@ -35,7 +35,7 @@ function Booking() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "http://localhost:5001/api/other/check-booking-availability",  
+        "https://www.evritech.ca/api/other/check-booking-availability",  
         {
           date,
           time
@@ -84,7 +84,7 @@ function Booking() {
       if (isAvailable) {
         dispatch(showLoading());
         const response = await axios.post(
-          "http://localhost:5001/api/other/book-appointment",  
+          "https://www.evritech.ca/api/other/book-appointment",  
           {
             firstName,
             lastName,

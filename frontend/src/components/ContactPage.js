@@ -21,7 +21,7 @@ function ContactPage() {
     try {
       dispatch(showLoading());
   
-      const response = await axios.get("http://localhost:5001/api/user/contact-page", {
+      const response = await axios.get("https://www.evritech.ca/api/user/contact-page", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

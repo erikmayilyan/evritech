@@ -12,7 +12,7 @@ function UpdateGraphic() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:5001/api/user/getGraphic/${id}`)
+    axios.get(`https://www.evritech.ca/api/user/getGraphic/${id}`)
       .then(result => {
         const data = result.data;
         setTitle(data.title || '');
@@ -36,7 +36,7 @@ function UpdateGraphic() {
       formData.append('image', image);
     };
 
-    axios.put(`http://localhost:5001/api/user/updateGraphic/${id}`, formData)
+    axios.put(`https://www.evritech.ca/api/user/updateGraphic/${id}`, formData)
       .then(response => {
         console.log('Update successful:', response.data);
         navigate('/portfolioGraphic');
@@ -68,7 +68,7 @@ function UpdateGraphic() {
               onChange={handleImageChange}
             />
             {currentImage && !image && ( 
-              <img src={`http://localhost:5001/${currentImage}`} alt="Current" style={{ width: '100px', height: 'auto' }} />
+              <img src={`https://www.evritech.ca/${currentImage}`} alt="Current" style={{ width: '100px', height: 'auto' }} />
             )}
           </div>
           <div className='mb-2'>
