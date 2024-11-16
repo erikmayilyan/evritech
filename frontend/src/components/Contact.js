@@ -1,7 +1,5 @@
 import React, { forwardRef, useState } from "react";
 import axios from 'axios'; 
-import { IoMdClose } from "react-icons/io";
-import ReCAPTCHA from "react-google-recaptcha";
 import "./Contact.css";
 
 const Contact = forwardRef((props, ref) => {
@@ -33,7 +31,6 @@ const Contact = forwardRef((props, ref) => {
   };
 
   const submitEmail = async (formData) => {
-    const apiUrl = process.env.REACT_APP_API_URL;
 
     try {
       const response = await axios.post(`https://www.evritech.ca/api/other/contactPage`, formData, {
