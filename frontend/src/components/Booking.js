@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import moment from 'moment-timezone';
 import axios from 'axios';
 import toast from "react-hot-toast";
-import ReCAPTCHA from "react-google-recaptcha";
 import { showLoading, hideLoading } from '../redux/alertsSlice'; 
 import "./Modal.css";
 import "./Booking.css";

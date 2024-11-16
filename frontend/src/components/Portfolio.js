@@ -14,46 +14,57 @@ function Portfolio() {
   useEffect(() => {
     const fetchWebsites = async () => {
       try {
-        const response = await axios.get(`https://www.evritech.ca/api/other/the-websites`);
-        setWebsites(response.data || []);
+        const response = await axios.get("https://www.evritech.ca/api/other/the-websites", { withCredentials: true });
+        setWebsites(response.data);
       } catch (error) {
         console.error('Error fetching websites:', error);
         setError('Unable to load websites');
       }
     };
-
     const fetchGraphics = async () => {
       try {
-        const response = await axios.get(`https://www.evritech.ca/api/other/the-graphic`);
-        setGraphics(response.data || []);
+        const response = await axios.get("https://www.evritech.ca/api/other/the-graphic", { withCredentials: true });
+        setGraphics(response.data);
       } catch (error) {
         console.error('Error fetching graphic designs:', error);
         setError('Unable to load graphics');
       }
     };
-
     fetchWebsites();
     fetchGraphics();
   }, []);
 
   const filterData = [
-    { filterId: 1, label: 'All' },
-    { filterId: 2, label: 'Web Development' },
-    { filterId: 3, label: 'Graphic Design' }
+    {
+      filterId: 1,
+      label: 'All'
+    },
+    {
+      filterId: 2,
+      label: 'Web Development'
+    },
+    {
+      filterId: 3,
+      label: 'Graphic Design'
+    }
   ];
 
   function handleFilter(currentId) {
     setFilteredValue(currentId);
-  }
+  };
 
   function handleHover(index) {
     setHoveredValue(index);
-  }
+  };
 
   const filteredItems = () => {
-    if (filteredValue === 1) return [...websites, ...graphics];
-    if (filteredValue === 2) return websites;
-    if (filteredValue === 3) return graphics;
+    if (filteredValue === 1) {
+      return [...websites, ...graphics];
+    } else if (filteredValue === 2) {
+      return websites;
+    } else if (filteredValue === 3) {
+      return graphics;
+    }
     return [];
   };
 
@@ -66,8 +77,8 @@ function Portfolio() {
           <ul className='portfolio-contents-filter'>
             {filterData.map((item) => (
               <li
-                key={item.filterId}
                 onClick={() => handleFilter(item.filterId)}
+                key={item.filterId}
                 className={filteredValue === item.filterId ? 'active-filter' : ''}
               >
                 {item.label}
@@ -78,16 +89,15 @@ function Portfolio() {
             {filteredItems().map((item, index) => (
               <div
                 className='portfolio-contents-cards-item'
-                key={`card-${item.id || index}`}
+                key={`cardItem${item.name?.trim() || item.title?.trim()}`}
                 onMouseEnter={() => handleHover(index)}
                 onMouseLeave={() => handleHover(null)}
               >
                 <div className='portfolio-contents-cards-item-images'>
-                  <a href={item.link || '#'} target="_blank" rel="noopener noreferrer">
+                  <a>
                     <img
-                      alt={item.title || item.name || 'Portfolio item'}
+                      alt={item.title || item.name}
                       src={`https://www.evritech.ca/${item.image}`}
-                      onError={(e) => (e.target.src = '/fallback-image.jpg')} // Default fallback
                     />
                   </a>
                 </div>
@@ -96,12 +106,7 @@ function Portfolio() {
                     <div>
                       <h1 className="overlay-Title">{item.title || item.name}</h1>
                       {item.urlTitle && item.link && (
-                        <a
-                          href={item.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="portfolio-button"
-                        >
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="portfolio-button">
                           {item.urlTitle}
                         </a>
                       )}
@@ -117,6 +122,6 @@ function Portfolio() {
       <Footer />
     </div>
   );
-}
+};
 
 export default Portfolio;
