@@ -7,7 +7,7 @@ const dbConfig = require('./config');
 
 app.use(express.json());
 
-const allowedOrigins = ['https://www.evritech.ca'];
+const allowedOrigins = ['https://www.evritech.ca', 'http://localhost:3000'];
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -20,6 +20,11 @@ app.use(cors({
   },
   credentials: true,
 }));
+
+app.use((req, res, next) => {
+  console.log('Request Origin:', req.headers.origin);
+  next();
+});
 
 console.log(`Allowed CORS origins: ${allowedOrigins.join(', ')}`);
 
