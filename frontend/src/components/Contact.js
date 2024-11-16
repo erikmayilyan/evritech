@@ -139,20 +139,7 @@ const Contact = forwardRef((props, ref) => {
               placeholder="Write Your Message Here" 
               value={theMessage}
               onChange={onChangeMessage}
-              required></textarea>
-            <div className="recaptcha-container">
-              <ReCAPTCHA
-                sitekey="6LfmdUMqAAAAAFzLzzt6uptzA76s0QpZJ2CdZlII"
-                onChange={(value) => {
-                  console.log('ReCAPTCHA value:', value);
-                  setCapVal(value);
-                }}
-                onExpired={() => {
-                  console.log('ReCAPTCHA expired');
-                  setCapVal(null); 
-                }}
-              />  
-            </div>          
+              required></textarea>         
             <button type="submit" className="btn dark-btn" disabled={!capVal}>SUBMIT</button>
           </form>
         </div>

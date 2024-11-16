@@ -77,11 +77,11 @@ function Booking() {
   const toggleModal = () => {
     setModal(!modal);
   };
+
+  const SECRET_KEY = process.env.SECRET_KEY;
   
   const bookNow = async (event) => {
     event.preventDefault();
-
-    const apiUrl = process.env.REACT_APP_API_URL;
   
     try {
       const isAvailable = await checkAvailability();
@@ -272,19 +272,6 @@ function Booking() {
                 name="timezone"
                 value={timezone}
               />
-              <div className="recaptcha-container">
-                <ReCAPTCHA
-                  sitekey="6LfmdUMqAAAAAFzLzzt6uptzA76s0QpZJ2CdZlII"
-                  onChange={(value) => {
-                    console.log('ReCAPTCHA value:', value);
-                    setCapVal(value);
-                  }}
-                  onExpired={() => {
-                    console.log('ReCAPTCHA expired');
-                    setCapVal(null); 
-                  }}
-                />  
-              </div> 
             </div>
             <button type="submit" className="btn theBookingBtn" disabled={!capVal}>SUBMIT</button>
           </div>
