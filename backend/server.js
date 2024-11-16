@@ -14,10 +14,15 @@ const allowedOrigins = ['https://www.evritech.ca', 'http://localhost:3000'];
 app.use(cors({
   origin: function (origin, callback) {
     console.log('Request Origin:', origin);
-    if (!origin) return callback(null, true);
+    if (!origin) {
+      console.log("No origin header detected, allowing CORS");
+      return callback(null, true);  // Allow no origin (e.g., server-to-server requests)
+    }
     if (allowedOrigins.includes(origin)) {
+      console.log(`Allowed origin: ${origin}`);
       callback(null, true);
     } else {
+      console.log(`CORS blocked for origin: ${origin}`);
       callback(new Error('Not allowed by CORS'));
     }
   },
