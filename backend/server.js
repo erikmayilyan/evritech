@@ -7,7 +7,7 @@ const dbConfig = require('./config');
 
 app.use(express.json());
 
-const allowedOrigins = ['https://www.evritech.ca', 'http://localhost:3000'];
+const allowedOrigins = ['https://www.evritech.ca'];
 
 app.use(cors({
   origin: function (origin, callback) {
