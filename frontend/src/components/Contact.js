@@ -140,7 +140,7 @@ const Contact = forwardRef((props, ref) => {
               value={theMessage}
               onChange={onChangeMessage}
               required></textarea>         
-            <button type="submit" className="btn dark-btn" disabled={!capVal}>SUBMIT</button>
+            <button type="submit" className="btn dark-btn">SUBMIT</button>
           </form>
         </div>
         {modal && (

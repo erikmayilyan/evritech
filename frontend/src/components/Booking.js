@@ -273,7 +273,7 @@ function Booking() {
                 value={timezone}
               />
             </div>
-            <button type="submit" className="btn theBookingBtn" disabled={!capVal}>SUBMIT</button>
+            <button type="submit" className="btn theBookingBtn">SUBMIT</button>
           </div>
         </form>
       </div>
