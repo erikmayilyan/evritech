@@ -272,21 +272,8 @@ function Booking() {
                 name="timezone"
                 value={timezone}
               />
-              <div className="recaptcha-container">
-                <ReCAPTCHA
-                  sitekey="6LfmdUMqAAAAAFzLzzt6uptzA76s0QpZJ2CdZlII"
-                  onChange={(value) => {
-                    console.log('ReCAPTCHA value:', value);
-                    setCapVal(value);
-                  }}
-                  onExpired={() => {
-                    console.log('ReCAPTCHA expired');
-                    setCapVal(null); 
-                  }}
-                />  
-              </div> 
             </div>
-            <button type="submit" className="btn theBookingBtn" disabled={!capVal}>SUBMIT</button>
+            <button type="submit" className="btn theBookingBtn">SUBMIT</button>
           </div>
         </form>
       </div>
