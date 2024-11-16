@@ -77,11 +77,11 @@ function Booking() {
   const toggleModal = () => {
     setModal(!modal);
   };
-
-  const SECRET_KEY = process.env.SECRET_KEY;
   
   const bookNow = async (event) => {
     event.preventDefault();
+
+    const apiUrl = process.env.REACT_APP_API_URL;
   
     try {
       const isAvailable = await checkAvailability();
@@ -274,8 +274,7 @@ function Booking() {
               />
               <div className="recaptcha-container">
                 <ReCAPTCHA
-                  sitekey="6LdXH4EqAAAAAAR7D2PxhVIkCTjq2ktNat9c41AL"
-                  
+                  sitekey="6LfmdUMqAAAAAFzLzzt6uptzA76s0QpZJ2CdZlII"
                   onChange={(value) => {
                     console.log('ReCAPTCHA value:', value);
                     setCapVal(value);
