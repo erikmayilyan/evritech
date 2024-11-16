@@ -17,8 +17,8 @@ function Portfolio() {
         const response = await axios.get(`https://www.evritech.ca/api/other/the-websites`, { withCredentials: true });
         setWebsites(response.data);
       } catch (error) {
-        console.error('Error fetching websites:', error);
-        setError('Unable to load websites');
+        console.error('Error fetching websites:', error.response?.data && error.message);
+        setError(`Unable to load websites: ${error.response?.data?.message}`);
       }
     };
     const fetchGraphics = async () => {
