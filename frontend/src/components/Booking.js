@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import moment from 'moment-timezone';
 import axios from 'axios';
 import toast from "react-hot-toast";
+import ReCAPTCHA from "react-google-recaptcha";
 import { showLoading, hideLoading } from '../redux/alertsSlice'; 
 import "./Modal.css";
 import "./Booking.css";
@@ -271,8 +272,22 @@ function Booking() {
                 name="timezone"
                 value={timezone}
               />
+              <div className="recaptcha-container">
+                <ReCAPTCHA
+                  sitekey="6LdXH4EqAAAAAAR7D2PxhVIkCTjq2ktNat9c41AL"
+                  
+                  onChange={(value) => {
+                    console.log('ReCAPTCHA value:', value);
+                    setCapVal(value);
+                  }}
+                  onExpired={() => {
+                    console.log('ReCAPTCHA expired');
+                    setCapVal(null); 
+                  }}
+                />  
+              </div> 
             </div>
-            <button type="submit" className="btn theBookingBtn">SUBMIT</button>
+            <button type="submit" className="btn theBookingBtn" disabled={!capVal}>SUBMIT</button>
           </div>
         </form>
       </div>
