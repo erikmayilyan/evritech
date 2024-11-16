@@ -1,3 +1,5 @@
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
+
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -7,7 +9,7 @@ const dbConfig = require('./config');
 
 app.use(express.json());
 
-const allowedOrigins = ['http://localhost:3000', 'https://www.evritech.ca'];
+const allowedOrigins = ['https://www.evritech.ca', 'http://localhost:3000'];
 
 app.use(cors({
   origin: function (origin, callback) {
