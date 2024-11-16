@@ -1,3 +1,5 @@
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
+
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -20,11 +22,6 @@ app.use(cors({
   },
   credentials: true,
 }));
-
-app.use((req, res, next) => {
-  console.log('Request Origin:', req.headers.origin);
-  next();
-});
 
 console.log(`Allowed CORS origins: ${allowedOrigins.join(', ')}`);
 
