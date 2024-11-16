@@ -97,7 +97,7 @@ function Portfolio() {
                   <a>
                     <img
                       alt={item.title || item.name}
-                      src={`${apiUrl}/${item.image}`}
+                      src={`https://www.evritech.ca/${item.image}`}
                     />
                   </a>
                 </div>
