@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -31,15 +31,28 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 
 function App() {
   const { loading } = useSelector(state => state.alerts);
+  const [cookiesAccepted, setCookiesAccepted] = useState(false);
 
   useEffect(() => {
-    if (window.ResizeObserver) {
-      const ro = new ResizeObserver(() => {
-        ro.disconnect();
-      });
-      ro.observe(document.body);
+    const cookiesAcceptedStatus = localStorage.getItem("cookiesAccepted");
+    if (cookiesAcceptedStatus === "true") {
+      setCookiesAccepted(true);  
+    } else {
+      setCookiesAccepted(false); 
     }
   }, []);
+
+  const handleAccept = () => {
+    localStorage.setItem("cookiesAccepted", "true");
+    setCookiesAccepted(true); 
+    console.log("Cookies accepted!");
+  };
+
+  const handleDecline = () => {
+    localStorage.setItem("cookiesAccepted", "false");
+    setCookiesAccepted(true); 
+    console.log("Cookies declined!");
+  };
 
   return (
     <div className="App">
@@ -50,6 +63,7 @@ function App() {
           </div>
         )}
         <Toaster position="top-center" reserveOrder={false} />
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -75,6 +89,29 @@ function App() {
           <Route path="/employee/profile/:userId" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/services" element={<Services />} />
         </Routes>
+
+        {!cookiesAccepted && (
+          <div className="cookie-consent-banner">
+            <div className="cookie-consent-text">
+              This website uses cookies to improve your experience. By continuing to browse, you consent to the use of cookies.
+              <a href="/privacyPolicy" className="cookie-link"> Learn more</a>
+            </div>
+            <div className="cookie-consent-buttons">
+              <button
+                className="accept-button"
+                onClick={handleAccept}
+              >
+                Accept
+              </button>
+              <button
+                className="decline-button"
+                onClick={handleDecline}
+              >
+                Decline
+              </button>
+            </div>
+          </div>
+        )}
       </Router>
     </div>
   );
