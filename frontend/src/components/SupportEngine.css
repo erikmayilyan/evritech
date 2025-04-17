@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+.supportEngineContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.supportEngineSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.supportEngineTitle {
+  color: rgb(235, 0, 0);
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  transition: opacity 0.3s ease;
+}
+
+.chatWithMeButton {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgb(234, 11, 11);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  transition: border 0.3s ease;
+  z-index: 1002; 
+}
+
+.chatContainer {
+  position: fixed;
+  bottom: calc(50px + 30px + 20px); 
+  right: 30px; 
+  width: 350px;
+  max-height: calc(100vh - 60px - 30px - 20px); 
+  z-index: 1001;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; 
+  box-sizing: border-box; 
+  transition: width 0.3s ease, height 0.3s ease; 
+}
+
+@media screen and (max-width: 569px) {
+  .chatContainer {
+    right: 0px;
+    max-height: 500px;
+    width: 300px;
+    max-width: 400px !important;
+    margin-bottom: 20px;
+  }
+}

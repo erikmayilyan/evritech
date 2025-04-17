@@ -1,0 +1,67 @@
+/* Appointments.css */
+
+/* Table container styling */
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  margin: 20px 0; /* Add some margin around the table */
+}
+
+/* Table styling */
+table {
+  width: 100%; /* Ensure the table takes up full width of the container */
+  border-collapse: collapse; /* Collapse borders between cells */
+}
+
+th, td {
+  padding: 12px; /* Add some padding inside table cells */
+  text-align: left; /* Align text to the left */
+  border-bottom: 1px solid #ddd; /* Add a light border between rows */
+}
+
+th {
+  background-color: #f4f4f4; /* Add a background color for headers */
+  position: sticky; /* Make headers sticky at the top */
+  top: 0;
+  z-index: 1; /* Ensure headers are above other content */
+}
+
+/* Scrollbar styling */
+.table-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #888; /* Scrollbar thumb color */
+  border-radius: 4px; /* Round scrollbar thumb edges */
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker color on hover */
+}
+
+/* Pagination controls styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pagination button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(.disabled) {
+  opacity: 0.8;
+}

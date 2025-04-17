@@ -1,0 +1,124 @@
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.spinner-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.307);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+.spinner-border {
+  width: 5rem;
+  height: 5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cookie-consent-banner {
+  background: rgb(244, 46, 46);
+  color: white;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.cookie-consent-text {
+  margin-bottom: 10px;
+}
+
+.cookie-link {
+  color: white;
+  text-decoration: underline;
+}
+
+.cookie-consent-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cookie-consent-buttons button {
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 2px solid white;
+  transition: background-color 0.3s;
+}
+
+.accept-button {
+  background-color: white;
+  color: #4e503b;
+}
+
+.accept-button:hover {
+  background-color: #000000;
+  color: white;
+}
+
+.decline-button {
+  background-color: #ffffff;
+  color: #4e503b;
+}
+
+.decline-button:hover {
+  background-color: #000000;
+  color: white;
+}
+
+@media screen and (max-width: 900px) {
+  .cookie-consent-banner {
+    text-align: center;
+    padding: 20px 10px;
+  }
+
+  .cookie-consent-buttons {
+    flex-direction: row;
+    align-items: center;
+  }
+}
