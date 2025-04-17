@@ -9,16 +9,20 @@ const dbConfig = require('./config');
 
 app.use(express.json());
 
-const allowedOrigins = ['https://www.evritech.ca', 'https://evritech.ca', 'http://localhost:3000'];
+//the new version
+const allowedOrigins = [
+  /^https:\/\/(www\.)?evritech\.ca$/, 
+  'http://localhost:3000'
+];
 
 app.use(cors({
   origin: function (origin, callback) {
     console.log('Request Origin:', origin);
     if (!origin) {
       console.log("No origin header detected, allowing CORS");
-      return callback(null, true);  // Allow no origin (e.g., server-to-server requests)
+      return callback(null, true); 
     }
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.some(pattern => pattern.test(origin))) {
       console.log(`Allowed origin: ${origin}`);
       callback(null, true);
     } else {
