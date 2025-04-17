@@ -12,7 +12,7 @@ app.use(express.json());
 //the new version
 const allowedOrigins = [
   /^https:\/\/(www\.)?evritech\.ca$/, 
-  'http://localhost:3000'
+  /^http:\/\/localhost:3000$/
 ];
 
 app.use(cors({
@@ -22,7 +22,8 @@ app.use(cors({
       console.log("No origin header detected, allowing CORS");
       return callback(null, true); 
     }
-    if (allowedOrigins.some(pattern => pattern.test(origin))) {
+    const allowed = allowedOrigins.some(pattern => pattern.test(origin));
+    if (allowed) {
       console.log(`Allowed origin: ${origin}`);
       callback(null, true);
     } else {
