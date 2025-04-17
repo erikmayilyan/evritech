@@ -40,7 +40,7 @@ function CreateWeb() {
     <Layout className="d-flex bg-primary justify-content-center align-items-center">
       <div className='w-50 bg-white rounded p-3'>
         <form onSubmit={handleSubmit}>
-          <h2>Add Website</h2>
+          <h2>Add Websites</h2>
           <div className='mb-2'>
             <label>Title</label>
             <input 
